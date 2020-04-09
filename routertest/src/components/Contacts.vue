@@ -24,7 +24,7 @@ export default {
     navigate(no) {
       if (confirm("상세 정보를 보시겠습니까?")) {
         this.$router.push(
-          { name: "contactbyno", param: { no: no } },
+          { name: "contactbyno", params: { no: no } },
           function() {
             console.log("/contacts/" + no + "로 이동 완료!");
           }

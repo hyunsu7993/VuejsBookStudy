@@ -1,6 +1,6 @@
 <template>
   <div>
-    <hr class="divider">
+    <hr class="divider" />
     <h1>연락처 상세</h1>
     <div>
       <table class="detail table table-boardered">
@@ -41,11 +41,17 @@ export default {
   created() {
     this.no = this.$route.params.no;
   },
-  watch: {
-      '$route' : function(to) { 
-          this.no = to.params.no;
-      }
+  //컴포넌트 수준 네비게이션 보호
+  beforeRouteUpdate(to, from, next) {
+    console.log(" -- beforeRouteUpdate -- ");
+    this.no = to.params.no;
+    next(); 
   },
+  // watch: {
+  //     '$route' : function(to) {
+  //         this.no = to.params.no;
+  //     }
+  // },
   computed: {
     contact: function() {
       var no = this.no;
@@ -64,11 +70,11 @@ table.detail {
   width: 400px;
 }
 
-.divider{
-    height: 3px;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: #FF0066;
-    border: 0 none;
+.divider {
+  height: 3px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #ff0066;
+  border: 0 none;
 }
 </style>

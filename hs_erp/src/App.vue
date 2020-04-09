@@ -1,18 +1,9 @@
 <template>
   <div id="app">
     <div class="header">
-      <h1 class="headerText">(주) 리치 스타</h1>
+      <div class="headerText">Hs ERP - V 1.0</div>
       <nav>
         <ul>
-          <!-- <li>
-            <router-link to="/home">Home</router-link>
-          </li>
-          <li>
-            <router-link to="/about">About</router-link>
-          </li>
-          <li>
-            <router-link to="/contacts">Contacts</router-link>
-          </li>-->
           <li>
             <router-link :to="{name:'home'}">Home</router-link>
           </li>
@@ -33,41 +24,14 @@
 
 <script>
 import Home from "./components/Home.vue";
-import About from "./components/About.vue";
-import Contacts from "./components/Contacts.vue";
-import ContactByNo from "./components/ContactByNo.vue";
 import VueRouter from "vue-router";
 
-// { path: "/contacts", component: Contacts },
-// { path: "/contacts/:no", component: ContactByNo },
 const router = new VueRouter({
   routes: [
     { path: "/", component: Home },
     { path: "/home", name: "home", component: Home },
-    { path: "/about", name: "about", component: About },
-    {
-      path: "/contacts",
-      name: "contacts",
-      component: Contacts,
-      children: [
-        {
-          path: ":no",
-          name: "contactbyno",
-          component: ContactByNo,
-          //라우터 정보 수준 네비게이션 보호
-          beforeEnter: (to, from, next) => {
-            console.log("@@ beforeEnter! : " + from.path + " --> " + to.path);
-            if(from.path.startsWith("/contacts")) {
-              alert("ok")
-              next();
-            } else {
-              alert("no")
-              next("/home");
-            }
-          }
-        }
-      ]
-    }
+    { path: "/home", name: "home", component: Home },
+    { path: "/home", name: "home", component: Home },
   ]
 });
 
