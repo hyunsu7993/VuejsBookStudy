@@ -36,11 +36,13 @@ import Home from "./components/Home.vue";
 import About from "./components/About.vue";
 import Contacts from "./components/Contacts.vue";
 import ContactByNo from "./components/ContactByNo.vue";
+import NotFound from "./components/NotFound.vue";
 import VueRouter from "vue-router";
 
 // { path: "/contacts", component: Contacts },
 // { path: "/contacts/:no", component: ContactByNo },
 const router = new VueRouter({
+  mode : "history",
   routes: [
     { path: "/", component: Home },
     { path: "/home", name: "home", component: Home },
@@ -54,22 +56,22 @@ const router = new VueRouter({
           path: ":no",
           name: "contactbyno",
           component: ContactByNo,
-          //라우터 정보 수준 네비게이션 보호
-          beforeEnter: (to, from, next) => {
-            console.log("@@ beforeEnter! : " + from.path + " --> " + to.path);
-            if(from.path.startsWith("/contacts")) {
-              alert("ok")
-              next();
-            } else {
-              alert("no")
-              next("/home");
-            }
-          }
+          props:true,
         }
       ]
-    }
+    },
+    { path: '*',component:NotFound}
   ]
 });
+          // //라우터 정보 수준 네비게이션 보호
+          // beforeEnter: (to, from, next) => {
+          //   console.log("@@ beforeEnter! : " + from.path + " --> " + to.path);
+          //   if(from.path.startsWith("/contacts")) {
+          //     next();
+          //   } else {
+          //     next("/home");
+          //   }
+          // }
 
 //전역 수준 네비게이션 보호
 router.beforeEach((to, from, next) => {

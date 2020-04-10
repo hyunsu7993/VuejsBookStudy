@@ -32,21 +32,21 @@ import contactlist from "../ContactList";
 
 export default {
   name: "contactbyno",
+  props: ['no'],
   data() {
     return {
-      no: 0,
       contacts: contactlist.contacts
     };
   },
-  created() {
-    this.no = this.$route.params.no;
-  },
-  //컴포넌트 수준 네비게이션 보호
-  beforeRouteUpdate(to, from, next) {
-    console.log(" -- beforeRouteUpdate -- ");
-    this.no = to.params.no;
-    next(); 
-  },
+      // no: 0,
+  // created() {
+  //   this.no = this.$route.params.no;
+  // },
+  // beforeRouteUpdate(to, from, next) {
+  //   console.log(" -- beforeRouteUpdate -- ");
+  //   this.no = to.params.no;
+  //   next(); 
+  // },
   // watch: {
   //     '$route' : function(to) {
   //         this.no = to.params.no;
